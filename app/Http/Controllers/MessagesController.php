@@ -12,6 +12,8 @@ class MessagesController extends Controller
             'email' => 'required',
             'subject' => 'required',
             'content' => 'required'
+        ],[
+            'name.required'=>'necesito tu nombre'
         ]);
     }
 }
