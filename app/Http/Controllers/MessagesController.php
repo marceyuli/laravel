@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\MessageReceived;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class MessagesController extends Controller
 {
     public function store(Request $request){
-        request()->validate([ //metodo validar datos a traves del request
+        $message = request()->validate([ //metodo validar datos a traves del request
             'name' => 'required',  //el name de cada casilla que esta en el form
             'email' => 'required',
             'subject' => 'required',
@@ -15,5 +17,7 @@ class MessagesController extends Controller
         ],[
             'name.required'=>'necesito tu nombre'
         ]);
+        //enviar el mail
+        Mail::to('yulianamarcela200@gmail.com')->send(new MessageReceived($message));
     }
 }
