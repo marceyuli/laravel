@@ -14,7 +14,11 @@ class PortfolioController extends Controller
      */
     public function index()
     {
-    return view('portfolio',['projects'=>Project::latest()->paginate]);
+    return view('portfolio',['projects'=>Project::latest()->paginate()]);
+    }
+
+    public function show(Project $project){
+        return view('projects\show',['project'=>$project]);
     }
 
 }

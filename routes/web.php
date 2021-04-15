@@ -5,6 +5,9 @@ use App\Http\Controllers\PortfolioController;
 
 Route::view('/','home')->name('home');
 Route::view('/about','about')->name('about');
-Route::get('portfolio', [PortfolioController::class, 'index'])->name('portfolio');
+
+Route::get('portfolio', [PortfolioController::class, 'index'])->name('portfolio.index');
+Route::get('/portfolio/{project}','PortfolioController@show')->name('portfolio.show');
+
 Route::view('/contact','contact')->name('contact');
 Route::post('contact','MessagesController@store');
