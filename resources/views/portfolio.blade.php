@@ -4,7 +4,7 @@
 @section('content')
 <h1>Portfolio</h1>
     @forelse($portfolio as $portfolioItem)
-        <li>{{$portfolioItem['title']}}</li>
+        <li>{{$portfolioItem->title}}  </li>
     @empty
         <li>No hay proyectos para mostrar</li>
     @endforelse
