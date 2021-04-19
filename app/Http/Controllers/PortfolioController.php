@@ -21,4 +21,18 @@ class PortfolioController extends Controller
         return view('projects\show',['project'=>$project]);
     }
 
+    public function create(){
+        return view('projects\create');
+    }
+
+    public function store(){
+        return Project::create([
+            'title' => request('title'),
+            'url' => request('url'),
+            'description' => request('description'),
+        ]);
+
+        return redirect()->route('portfolio');
+    }
+
 }
