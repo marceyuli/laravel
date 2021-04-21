@@ -26,13 +26,15 @@ class PortfolioController extends Controller
     }
 
     public function store(){
-        return Project::create([
-            'title' => request('title'),
-            'url' => request('url'),
-            'description' => request('description'),
+        $fields= request ()->validate([
+            'title' => 'required',
+            'url' => 'required',
+            'description' => 'required',
         ]);
 
-        return redirect()->route('portfolio');
+        Project::create($fields);
+
+        return redirect()->route('portfolio.index');
     }
 
 }
