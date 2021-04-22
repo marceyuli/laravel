@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateProjectRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
 
@@ -25,14 +26,9 @@ class PortfolioController extends Controller
         return view('projects\create');
     }
 
-    public function store(){
-        $fields= request ()->validate([
-            'title' => 'required',
-            'url' => 'required',
-            'description' => 'required',
-        ]);
+    public function store(CreateProjectRequest $request){
 
-        Project::create($fields);
+        Project::create($request->validated());
 
         return redirect()->route('portfolio.index');
     }
