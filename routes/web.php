@@ -12,6 +12,8 @@ Route::get('/portfolio/crear','PortfolioController@create')->name('portfolio.cre
 Route::post('/portfolio','PortfolioController@store')->name('portfolio.store');
 
 Route::get('/portfolio/{project}','PortfolioController@show')->name('portfolio.show');
+Route::get('/portfolio/{project}/editar','PortfolioController@edit')->name('portfolio.edit');
+Route::patch('/portfolio/{project}','PortfolioController@update')->name('portfolio.update');
 
 Route::view('/contact','contact')->name('contact');
 Route::post('contact','MessagesController@store');
