@@ -33,7 +33,7 @@ class PortfolioController extends Controller
 
         Project::create($request->validated());
 
-        return redirect()->route('portfolio.index');
+        return redirect()->route('portfolio.index')->with('status','El proyecto fue creado con exito');
     }
 
     public function edit(Project $project){
@@ -43,11 +43,11 @@ class PortfolioController extends Controller
     public function update(Project $project, SaveProjectRequest $request){
         $project->update( $request->validated() );
 
-        return redirect()->route('portfolio.show', $project);
+        return redirect()->route('portfolio.show', $project)->with('status','El proyecto fue actualizado con exito');
     }
 
     public function destroy(Project $project){
         $project->delete();
-        return redirect()->route('portfolio.index');
+        return redirect()->route('portfolio.index')->with('status','El proyecto fue eliminado con exito');
     }
 }

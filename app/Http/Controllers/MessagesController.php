@@ -19,5 +19,7 @@ class MessagesController extends Controller
         ]);
         //enviar el mail
         Mail::to('yulianamarcela200@gmail.com')->queue(new MessageReceived($msg));
+
+        return back()->with('status','Recibimos tu mensaje,te responderemos en menos de 24 horas');
     }
 }
